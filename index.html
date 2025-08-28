@@ -12,7 +12,6 @@
         body {
             font-family: 'Tajawal', sans-serif;
             background: linear-gradient(to bottom, #fde4e4, #fff0f0);
-            /* إضافة تنسيق ليناسب صفحة كلمة المرور */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,7 +34,7 @@
             max-height: 80vh;
             object-fit: contain;
             transition: opacity 1s ease-in-out;
-            border-radius: 1.5rem; /* rounded-3xl */
+            border-radius: 1.5rem;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -48,7 +47,6 @@
             overflow: hidden;
         }
         
-        /* تنسيقات صفحة كلمة المرور الجديدة */
         .password-container {
             text-align: center;
             padding: 40px;
@@ -96,7 +94,6 @@
             color: #ef4444;
             font-weight: 500;
         }
-        /* إخفاء المحتوى الرئيسي في البداية */
         .hidden {
             display: none;
         }
@@ -105,14 +102,13 @@
 <body>
 
     <div id="password-page" class="password-container">
-        <h2> كلمة السر يكتكوتي</h2>
+        <h2>أدخل كلمة المرور</h2>
         <input type="password" id="passwordInput" placeholder="">
         <button onclick="checkPassword()">دخول</button>
         <p id="message" class="message-box"></p>
     </div>
 
     <div id="website-content" class="hidden">
-        <audio id="background-music" loop src="04.Dih_Ili_5aditni_Mini.mp3"></audio>
 
         <div id="cover-page" class="h-screen w-full relative overflow-hidden flex flex-col justify-center items-center text-center text-white p-8">
             <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg')"></div>
@@ -201,21 +197,17 @@
         <div id="birthday-page" class="h-screen w-full hidden flex flex-col justify-center items-center text-center p-8 relative birthday-content">
             <canvas id="c"></canvas>
             
-            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50 p-3 rounded-full bg-rose-500/30 backdrop-blur-sm shadow-lg">
+            <a href="https://soundcloud.com/ayaat-sobhy/lrmapmhhony1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50 p-3 rounded-full bg-rose-500/30 backdrop-blur-sm shadow-lg">
                 <button id="music-btn" class="p-2 focus:outline-none">
-                    <svg id="play-icon" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
                     </svg>
-                    <svg id="pause-icon" class="w-8 h-8 text-white hidden" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H8z" />
-                    </svg>
                 </button>
-            </div>
+            </a>
         </div>
     </div>
 
     <script>
-        // دالة التحقق من كلمة المرور
         function checkPassword() {
             const password = document.getElementById("passwordInput").value;
             const correctPassword = "2001";
@@ -226,7 +218,6 @@
             if (password === correctPassword) {
                 passwordPage.classList.add("hidden");
                 websiteContent.classList.remove("hidden");
-                // تأكد من أن الـ body يعود إلى طبيعته بعد إخفاء صفحة كلمة المرور
                 document.body.style.display = 'block';
                 document.body.style.justifyContent = 'initial';
                 document.body.style.alignItems = 'initial';
@@ -243,45 +234,22 @@
             const birthdayBtn = document.getElementById('birthday-btn');
             const birthdayPage = document.getElementById('birthday-page');
 
-            const musicBtn = document.getElementById('music-btn');
-            const musicAudio = document.getElementById('background-music');
-            const playIcon = document.getElementById('play-icon');
-            const pauseIcon = document.getElementById('pause-icon');
-
-            // Event listener for the "Start Story" button
             startBtn.addEventListener('click', () => {
                 coverPage.classList.add('hidden');
                 mainContent.classList.remove('hidden');
             });
 
-            // Event listener for the "Happy Birthday" button
             birthdayBtn.addEventListener('click', () => {
                 mainContent.classList.add('hidden');
                 birthdayPage.classList.remove('hidden');
-                // The animation will start automatically due to the script's nature
             });
 
-            // Event listener for the music button
-            musicBtn.addEventListener('click', () => {
-                if (musicAudio.paused) {
-                    musicAudio.play();
-                    playIcon.classList.add('hidden');
-                    pauseIcon.classList.remove('hidden');
-                } else {
-                    musicAudio.pause();
-                    playIcon.classList.remove('hidden');
-                    pauseIcon.classList.add('hidden');
-                }
-            });
-
-            // ** The code below is from happy birtday.js **
             let w = (c.width = window.innerWidth),
                 h = (c.height = window.innerHeight),
                 ctx = c.getContext("2d"),
                 hw = w / 2;
             (hh = h / 2),
                 (opts = {
-                    // change the text in here //
                     strings: ["HAPPY", "BIRTHDAY!", "to You"],
                     charSize: 30,
                     charSpacing: 35,
@@ -612,7 +580,6 @@
                 ctx.font = opts.charSize + "px Verdana";
             });
 
-            // Re-bind the birthday button to the new canvas page
             document.getElementById('birthday-btn').addEventListener('click', () => {
                 document.getElementById('main-content').classList.add('hidden');
                 document.getElementById('birthday-page').classList.remove('hidden');
