@@ -97,14 +97,22 @@
         .hidden {
             display: none;
         }
+        .faded-out {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .faded-in {
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body>
 
     <div id="password-page" class="password-container">
-        <h2>أدخل كلمة المرور</h2>
+        <h2>  الباسورد يكتكوتي</h2>
         <input type="password" id="passwordInput" placeholder="">
-        <button onclick="checkPassword()">دخول</button>
+        <button onclick="checkPassword()">افتح ي سمسم</button>
         <p id="message" class="message-box"></p>
     </div>
 
@@ -132,9 +140,9 @@
 
         <div id="main-content" class="max-w-4xl mx-auto p-8 lg:p-12 hidden">
 
-            <div class="space-y-16 md:space-y-24">
+            <div id="chapter-container" class="space-y-16 md:space-y-24">
 
-                <section class="bg-white p-8 md:p-10 rounded-3xl shadow-xl transform transition-all duration-500 hover:scale-[1.01] hover:hover:shadow-2xl">
+                <section id="chapter1" class="bg-white p-8 md:p-10 rounded-3xl shadow-xl">
                     <h2 class="text-3xl md:text-4xl font-bold text-rose-800 mb-6 border-b-2 border-rose-200 pb-2">
                         رسالة من الماضي
                     </h2>
@@ -144,66 +152,73 @@
                         المسافة مكنتش مجرد بعد المسافة كانت فرصة لقلبي إنه يفهم. كل يوم بيعدي كل مكالمة وكل كلمة كانت بتخليني أحس بحبك بجد وإنه بينمو في صمت.<br><br>
                         دلوقتي وبعد كل الوقت ده قلبي عرف إنه بيحبك بجد. وكل اللي أتمناه هو إني أعيش معاكي بداية مفيهاش رجوع بداية فيها حب حقيقي."
                     </p>
+                    <div class="mt-8 text-center">
+                        <button onclick="nextChapter('chapter1')" class="bg-rose-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-rose-600 transition-colors duration-300">
+                             اللي بعده
+                        </button>
+                    </div>
                 </section>
 
-                <section class="bg-white p-8 md:p-10 rounded-3xl shadow-xl transform transition-all duration-500 hover:scale-[1.01] hover:shadow-2xl">
+                <section id="chapter2" class="bg-white p-8 md:p-10 rounded-3xl shadow-xl hidden">
                     <h2 class="text-3xl md:text-4xl font-bold text-rose-800 mb-6 border-b-2 border-rose-200 pb-2">
                         السبع ساعات
                     </h2>
                     <p class="text-lg leading-relaxed text-gray-700">
                         "أنا عمري ما هنسى المكالمة دي. سبع ساعات، سبع ساعات متواصلة من الكلام والضحك. في البداية كنت خايف الكلام يخلص بس اللي اكتشفته إن طول الوقت ده كان كافيه إنه يخلينا نعرف بعض بجد.<br><br>
-                        حسيت إن كل دقيقة بتعدي بتقربني منك أكتر وإن المسافة اللي بيننا بتختفي مع كل كلمة. السبع ساعات دول كانوا أكتر من مجرد مكالمة كانوا نقطة تحول في قصتنا لحظة اكتشفت فيها قد إيه أنتي مهمة بالنسبالي.<br><br>
-                        عرفت في اليوم ده إنك مش مجرد بنت أنتِ صديقة وأخت وكل حاجة حلوة في الدنيا. السبع ساعات دول علموني إن الحب الحقيقي مش بيحتاج مكان هو بيحتاج بس قلبين مستعدين يتكلموا ويسمعوا لبعض."
+                        حسيت إن كل دقيقة بتعدي بتقربني منك أكتر وإن المسافة اللي بيننا بتختفي مع كل كلمة. السبع ساعات دول كانوا أكتر من مجرد مكالمة كانوا نقطة تحول في قصتنا لحظة اكتشفت فيها قد إيه انتي مهمة بالنسبالي.<br><br>
+                        عرفت في اليوم ده إنك مش مجرد بنت انتي صديقة وأخت وكل حاجة حلوة في الدنيا. السبع ساعات دول علموني إن الحب الحقيقي مش بيحتاج مكان هو بيحتاج بس قلبين مستعدين يتكلموا ويسمعوا لبعض."
                     </p>
+                    <div class="mt-8 text-center">
+                        <button onclick="nextChapter('chapter2')" class="bg-rose-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-rose-600 transition-colors duration-300">
+                             اللي بعده
+                        </button>
+                    </div>
                 </section>
 
-                <section class="bg-white p-8 md:p-10 rounded-3xl shadow-xl transform transition-all duration-500 hover:scale-[1.01] hover:hover:shadow-2xl">
+                <section id="chapter3" class="bg-white p-8 md:p-10 rounded-3xl shadow-xl hidden">
                     <h2 class="text-3xl md:text-4xl font-bold text-rose-800 mb-6 border-b-2 border-rose-200 pb-2">
                         ليه بحبك
                     </h2>
                     <p class="text-lg leading-relaxed text-gray-700">
                         أحيانا بيكون الحب في اللحظات البسيطة. زي اللحظة اللي بتنور فيها الدنيا كلها لما بشوف ملامحك أو لما بسمع ضحكتك كل حاجة حواليا بتبقى أجمل. بس الحب الحقيقي بيكون في حاجات أعمق.<br><br>
                         أنا بحبك عشان قلبك الطيب اللي بيهتم بيا وبيخاف عليا. بحبك عشان دمك الخفيف اللي بيقدر ينسيني أي حاجة مضيقاني. وبحبك أكتر عشان الأمل اللي بتديهولي، إيمانك بيا بيخليني أشوف نفسي بطريقة أحسن.<br><br>
-                        باختصار أنتي كل حاجة في حياتي. حرفيا كل حاجة. أنتي الأمان اللي بدور عليه أنتي البداية والنهاية. أنتي السبب اللي خلاني أعرف إيه هو الحب بجد.
+                        باختصار انتي كل حاجة في حياتي. حرفيا كل حاجة. انتي الأمان اللي بدور عليه أنتي البداية والنهاية. انتي السبب اللي خلاني أعرف إيه هو الحب بجد.
                     </p>
+                    <div class="mt-8 text-center">
+                        <button onclick="nextChapter('chapter3')" class="bg-rose-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-rose-600 transition-colors duration-300">
+                             اللي بعده
+                        </button>
+                    </div>
                 </section>
 
-                <section class="bg-white p-8 md:p-10 rounded-3xl shadow-xl transform transition-all duration-500 hover:scale-[1.01] hover:shadow-2xl">
+                <section id="chapter4" class="bg-white p-8 md:p-10 rounded-3xl shadow-xl hidden">
                     <h2 class="text-3xl md:text-4xl font-bold text-rose-800 mb-6 border-b-2 border-rose-200 pb-2">
                         بداية قصة لا تنتهي
                     </h2>
                     <p class="text-lg leading-relaxed text-gray-700">
                         "طريقنا كان طويل والمسافة اللي بيننا كانت أكبر تحدي. بس كل يوم بيعدي كل مكالمة وكل كلمة بتخليني متأكد إن نهاية الطريق ده هي انتي.<br><br>
                         أتمنى اليوم اللي تكون المسافة دي مجرد ذكرى. اليوم اللي أقدر أحتفل بعيد ميلادك وأنا ماسك إيدك اليوم اللي أقدر أشوف ضحكتك من غير شاشة. أنا بحلم باليوم اللي نمشي فيه في الشارع وأنا مش خايف إن اليوم يخلص.<br><br>
-                        أنتي اللي خلتيني أؤمن إن النهاية السعيدة مش مجرد خيال لكنها واقع ممكن نعيشه سوا. وده مش مجرد وعد ده وعد مني إني هعمل كل حاجة عشان نعيش كل أحلامنا مع بعض.
+                        انتي اللي خلتيني أؤمن إن النهاية السعيدة مش مجرد خيال لكنها واقع ممكن نعيشه سوا. وده مش مجرد وعد ده وعد مني إني هعمل كل حاجة عشان نعيش كل أحلامنا مع بعض.
                         بحبك يكتكوتي."
                     </p>
+                    <div class="mt-8 text-center">
+                        <button onclick="nextChapter('chapter4')" class="bg-rose-500 text-white text-lg font-semibold py-4 px-10 rounded-full shadow-lg hover:bg-rose-600 transform transition-all duration-300 animate-pulse-once">
+                            اضغطي هنا يا قمر
+                        </button>
+                    </div>
                 </section>
-
-                <section class="text-center my-16 md:my-24">
-                    <p class="text-2xl md:text-3xl text-gray-700 italic">
-                        كل سنه وانتي حبيبتي كل سنه وانتي صاحبتي و بنتي كل سنه وانتي كل حياتي
-                    </p>
-                </section>
-
-                <div class="text-center my-16 md:my-24">
-                    <button id="birthday-btn" class="bg-rose-500 text-white text-lg font-semibold py-4 px-10 rounded-full shadow-lg hover:bg-rose-600 transform transition-all duration-300 animate-pulse-once">
-                        اضغطي هنا يا قمر
-                    </button>
-                </div>
             </div>
         </div>
 
         <div id="birthday-page" class="h-screen w-full hidden flex flex-col justify-center items-center text-center p-8 relative birthday-content">
             <canvas id="c"></canvas>
             
-            <a href="https://soundcloud.com/ayaat-sobhy/lrmapmhhony1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50 p-3 rounded-full bg-rose-500/30 backdrop-blur-sm shadow-lg">
-                <button id="music-btn" class="p-2 focus:outline-none">
-                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
-                    </svg>
-                </button>
-            </a>
+            <a href="https://open.spotify.com/track/6a4l9CrvajT9qtcFAY9oxk?si=f07b7400319749ce" target="_blank" class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-50">
+    <button class="flex items-center space-x-2 px-6 py-3 bg-[#1DB954] text-white font-bold rounded-full shadow-2xl transition-all duration-300 hover:scale-105 animate-pulse">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-white" viewBox="0 0 496 512"><path d="M24.7 97.4C36.9 83.9 55.4 78.4 73.8 84.4c5.1 1.7 10.1 3.9 14.9 6.7L190.2 165c30.9 16.4 69.9 16.4 100.8 0l101.4-58.4c5-2.8 10-5 15.1-6.7c18.4-6.1 36.9-.5 49.1 12.9s14.8 32.5 6 48.8l-12.7 22c-8.5 14.7-25.9 21.8-42.5 18.2l-5.6-1.2C364.7 200.5 352 184.2 352 166.4V64c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 7.4L240 148.2 198.7 103.5c-9.2-9.6-22.9-11.4-34.9-7.4S144 51.1 144 64v84.9c0 1.9-.3 3.8-.8 5.6l-2.6 9.3c-2.3 8.3-9.5 14.2-18 15.6l-5.5 .9c-16.6 2.8-32.9-4.8-43.1-18.1L23.4 146.2c-8.9-14.7-8-33.4 2-48.8zM240 288l43.2 24.9c5 2.8 10 5 15.1 6.7c18.4 6.1 36.9 .5 49.1-12.9s14.8-32.5 6-48.8l-12.7-22c-8.5-14.7-25.9-21.8-42.5-18.2l-5.6 1.2c-12.3 2.6-25-13.7-25-31.5V148.9l-4.7 2.6c-9.2 5.1-19.1 8.5-29.4 10.1-5.1 .8-10.2 1.2-15.3 1.2s-10.2-.4-15.3-1.2c-10.3-1.6-20.2-5-29.4-10.1l-4.7-2.6v31.5c0 1.9-.3 3.8-.8 5.6l-2.6 9.3c-2.3 8.3-9.5 14.2-18 15.6l-5.5 .9c-16.6 2.8-32.9-4.8-43.1-18.1L23.4 242.2C14.5 227.5 15.4 208.8 25.7 193.4s24.4-18.7 39-16.1l40.1 6.9c14.2 2.4 27.2 9.5 37 20l32.3 34.3c3.2 3.4 7.2 6.1 11.5 8.1l-.1 .1c13.7 6.4 28.3 9.6 42.9 9.6c.1 0 .2 0 .3 0zM240 352l-43.2 24.9c-5 2.8-10 5-15.1 6.7c-18.4 6.1-36.9 .5-49.1-12.9s-14.8-32.5-6-48.8l12.7-22c8.5-14.7 25.9-21.8 42.5-18.2l5.6 1.2c12.3 2.6 25-13.7 25-31.5v-10.6l32.3 18.6c9.2 5.3 19.1 8.8 29.4 10.3 5.1 .8 10.2 1.2 15.3 1.2s10.2-.4 15.3-1.2c10.3-1.6 20.2-5 29.4-10.1l4.7-2.6V336.9c0 1.9-.3 3.8-.8 5.6l-2.6 9.3c-2.3 8.3-9.5 14.2-18 15.6l-5.5 .9c-16.6 2.8-32.9-4.8-43.1-18.1L240 352zM455 336.1c1.5-.7 3.1-1.3 4.8-1.7l-4.8 1.7zM492.2 230c-2.8-5-5.9-9.8-9.3-14.4l12.7 22c-.6 1.2-1.3 2.4-2 3.5s-1.5 2.1-2.3 3.1c-1.2 1.4-2.5 2.8-3.9 4.1s-2.8 2.5-4.4 3.7c-5.7 4.5-12.1 7.6-18.9 9.2l-2.5 .6c-16.6 2.8-32.9-4.8-43.1-18.1L352 288l43.2-24.9c5-2.8 10-5 15.1-6.7c1.3-.4 2.6-.9 3.9-1.5 1.4-.6 2.7-1.3 4.1-2.1c1.6-.9 3.1-1.9 4.6-3.1s3-2.3 4.3-3.7l12.7-22c8.9-14.7 8-33.4-2-48.8s-24.4-18.7-39-16.1l-40.1 6.9c-14.2 2.4-27.2 9.5-37 20l-32.3 34.3c-13.7 6.4-28.3 9.6-42.9 9.6c-.1 0-.2 0-.3 0s-.2 0-.3 0c-14.7 0-29.3-3.2-42.9-9.6L127.3 268l-32.3-34.3c-9.8-10.5-22.8-17.6-37-20l-40.1-6.9c-14.7-2.5-28.1 4.7-37 19.4s-8 33.3 2 48.8l12.7 22c10.2 13.3 26.5 20.9 43.1 18.1l5.5-.9c16.6-2.8 32.9 4.8 43.1 18.1L240 352l-43.2-24.9c-5-2.8-10-5-15.1-6.7c-18.4-6.1-36.9-.5-49.1 12.9s-14.8 32.5-6 48.8l12.7 22c8.5 14.7 25.9 21.8 42.5 18.2l5.6-1.2c12.3-2.6 25 13.7 25 31.5V448c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-7.4L256 363.8l41.3 44.7c9.2 9.6 22.9 11.4 34.9 7.4s19.8-16.7 19.8-29.6V352l43.2-24.9c5-2.8 10-5 15.1-6.7c1.3-.4 2.6-.9 3.9-1.5c1.4-.6 2.7-1.3 4.1-2.1c1.6-.9 3.1-1.9 4.6-3.1s3-2.3 4.3-3.7l12.7-22c8.9-14.7 8-33.4-2-48.8s-24.4-18.7-39-16.1l-40.1 6.9c-14.2 2.4-27.2 9.5-37 20L352 336l-4.7 2.6c-9.2 5.1-19.1 8.5-29.4 10.1c-5.1 .8-10.2 1.2-15.3 1.2s-10.2-.4-15.3-1.2c-10.3-1.6-20.2-5-29.4-10.1l-4.7-2.6v31.5c0 1.9-.3 3.8-.8 5.6l-2.6 9.3c-2.3 8.3-9.5 14.2-18 15.6l-5.5 .9c-16.6 2.8-32.9-4.8-43.1-18.1L24.7 414.6c-8.9-14.7-8-33.4 2-48.8s24.4-18.7 39-16.1l40.1 6.9c14.2 2.4 27.2 9.5 37 20l32.3 34.3c13.7 6.4 28.3 9.6 42.9 9.6c.1 0 .2 0 .3 0s.2 0 .3 0c14.7 0 29.3-3.2 42.9-9.6L368 396.9V336.9c0-1.9 .3-3.8 .8-5.6l2.6-9.3c2.3-8.3 9.5-14.2 18-15.6l5.5-.9c16.6-2.8 32.9 4.8 43.1 18.1L492.2 312c8.9 14.7 8 33.4-2 48.8s-24.4 18.7-39 16.1l-40.1-6.9c-14.2-2.4-27.2-9.5-37-20L336 352z"/></svg>
+        <span class="text-xl">اسمعي الأغنية</span>
+    </button>
+</a>
         </div>
     </div>
 
@@ -223,7 +238,7 @@
                 document.body.style.alignItems = 'initial';
                 document.body.style.minHeight = 'initial';
             } else {
-                message.textContent = "كلمة المرور خاطئة. حاول مرة أخرى.";
+                message.textContent = " غلط يكتكوتي";
             }
         }
 
@@ -231,17 +246,56 @@
             const coverPage = document.getElementById('cover-page');
             const mainContent = document.getElementById('main-content');
             const startBtn = document.getElementById('start-story-btn');
-            const birthdayBtn = document.getElementById('birthday-btn');
             const birthdayPage = document.getElementById('birthday-page');
 
-            startBtn.addEventListener('click', () => {
-                coverPage.classList.add('hidden');
-                mainContent.classList.remove('hidden');
-            });
+            // Map of chapters and their order
+            const chapters = ['chapter1', 'chapter2', 'chapter3', 'chapter4'];
 
-            birthdayBtn.addEventListener('click', () => {
-                mainContent.classList.add('hidden');
-                birthdayPage.classList.remove('hidden');
+            function fadeOut(element, onComplete) {
+                element.classList.add('faded-out');
+                setTimeout(() => {
+                    element.classList.add('hidden');
+                    element.classList.remove('faded-out');
+                    if (onComplete) onComplete();
+                }, 500); // Match transition duration
+            }
+
+            function fadeIn(element) {
+                element.classList.remove('hidden');
+                setTimeout(() => {
+                    element.classList.add('faded-in');
+                }, 10); // Small delay to trigger transition
+                setTimeout(() => {
+                    element.classList.remove('faded-in');
+                }, 510);
+            }
+
+            // Function to handle moving to the next chapter
+            window.nextChapter = function(currentChapterId) {
+                const currentIndex = chapters.indexOf(currentChapterId);
+                const currentChapter = document.getElementById(currentChapterId);
+
+                if (currentIndex < chapters.length - 1) {
+                    const nextChapterId = chapters[currentIndex + 1];
+                    const nextChapter = document.getElementById(nextChapterId);
+                    
+                    fadeOut(currentChapter, () => {
+                        fadeIn(nextChapter);
+                    });
+                } else {
+                    // This is the last chapter, so move to the birthday page
+                    fadeOut(mainContent, () => {
+                        fadeIn(birthdayPage);
+                    });
+                }
+            };
+
+            startBtn.addEventListener('click', () => {
+                fadeOut(coverPage, () => {
+                    fadeIn(mainContent);
+                    const firstChapter = document.getElementById(chapters[0]);
+                    fadeIn(firstChapter);
+                });
             });
 
             let w = (c.width = window.innerWidth),
@@ -578,11 +632,6 @@
                 hw = w / 2;
                 hh = h / 2;
                 ctx.font = opts.charSize + "px Verdana";
-            });
-
-            document.getElementById('birthday-btn').addEventListener('click', () => {
-                document.getElementById('main-content').classList.add('hidden');
-                document.getElementById('birthday-page').classList.remove('hidden');
             });
         });
     </script>
